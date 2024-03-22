@@ -1,0 +1,22 @@
+{% extends 'barra.html' %}
+
+{% block component %}
+
+<!-- Container que permite a visualisação em Grid dos imoveis--> 
+<div class="container">
+  {% for id, produto in outro.items() %}
+    <div class="col d-inline-flex mt-3">
+      <div class="card" style="width: 18rem;">
+        <img src={{ produto['imagem'] }} class="card-img-top" style="max-height: 10rem; ">
+        <div class="card-body" style=" height: 12rem; ">
+          <h5 class="card-title">ID: {{ id }} - {{ produto['tipo'] }}</h5>
+          <p class="card-text" style=" height: 4.5rem; ">{{ produto['descricao'] }}</p>
+          <a href={{ url_for ('imovel', id=id)}} class="btn btn-primary">Saiba mais</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}
