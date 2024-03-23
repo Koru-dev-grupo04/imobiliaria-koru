@@ -28,6 +28,7 @@ def imovel(id):
 
 # Visão de criação de imoveis 
 @app.route('/novo_imovel')
+
 def criar_imovel():
 
     return render_template('criar.html' )  
