@@ -27,11 +27,6 @@ def aluguel():
 def contato():
     return render_template('contato.html')
 
-@app.route('/adm')
-def adm():
-    dic = diccionarios.mostrar_imoveis("todos")
-    return render_template('adm.html', outro=dic)
-
 @app.route('/adicionar', methods= ['GET','POST'])
 def adiciona_imovel():
     if request.method == 'POST':
@@ -45,14 +40,12 @@ def adiciona_imovel():
         diccionarios.criar_imovel(imovel)
         return redirect("/")
     else:
-        return render_template("cadastro.html")
+        return render_template("cadastro.html") 
 
 @app.route('/remover/<int:id>')
 def remover_imovel(id):
     diccionarios.apagar_imoveis(id)
-    return redirect('/adm')
-
-
+    return redirect('/')
 
 @app.route('/editar/<int:id>', methods=['GET', 'POST'])
 def editar(id):
@@ -71,12 +64,11 @@ def editar(id):
         imovel['id'] = id
         return render_template('cadastro.html',**imovel)
 
-
 # Visão de cada imovel individual 
 @app.route('/imovel/<int:id>', methods=['GET', 'POST'])
 def imovel(id):
 
-    if request.method == 'POST':
+    if request.method == 'POST':  
     
         if "excluir" in request.form:
             diccionarios.apagar_imoveis(id)

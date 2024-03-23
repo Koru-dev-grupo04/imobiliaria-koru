@@ -25,8 +25,8 @@
             <dd class="col-sm-9 fs-5">{{ descricao }}</dd>
           </dl>
           <form  method="POST" enctype="multipart/form-data" action="" data-toggle="validation" class="needs-validation d-flex justify-content-start mt-5">
-            <input id="bt_barra_stilo" name="editar" class="btn btn-outline-dark fs-5 me-2" type="submit" value="Editar">
-            <input id="bt_barra_stilo" name="excluir" class="btn btn-outline-dark fs-5 me-2" type="submit" value="Excluir">
+            <a href="/editar/{{id}}" class="btn btn-outline-dark fs-5 me-2">Editar</a>
+            <a href="/remover/{{id}}" class="btn btn-outline-dark fs-5 me-2">Excluir</a>
         </form>
       </div>
     </div>
