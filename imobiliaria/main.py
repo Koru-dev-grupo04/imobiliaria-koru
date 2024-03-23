@@ -22,6 +22,10 @@ def aluguel():
     dic = diccionarios.mostrar_imoveis("aluguel")
     return render_template('index.html', outro=dic)
 
+@app.route('/contato')
+def contato():
+    return render_template('contato.html')
+
 @app.route('/adm')
 def adm():
     dic = diccionarios.mostrar_imoveis("todos")

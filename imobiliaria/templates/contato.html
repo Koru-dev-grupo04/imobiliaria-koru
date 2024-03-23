@@ -1,0 +1,77 @@
+{% extends 'barra.html' %}
+
+{% block component %}
+
+<div class="d-flex justify-content-center">
+    <div class="container">
+        <h2>Entre em contato</h2>
+        <form id="card-cont" class="box" action="/" method='POST'>
+            <div class="column is-4 is-offset-4">
+              <div class="field">
+                <label class="label">Nome</label>
+                <div class="control">
+                  <input 
+                    class="input" 
+                    type="text" 
+                    name="Nome" 
+                    placeholder="Nome Sobrenome" />
+                </div>
+              </div>
+        
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="email"
+                    name="Email"
+                    placeholder="usuario@contato.aq"
+                  />
+                </div>
+              </div>
+        
+              <div class="field">
+                <label class="label">Assunto</label>
+                <div class="control">
+                  <div class="select">
+                    <select>
+                      <option>Escolha uma opção</option>
+                      <option>Mais informações sobre imóvel</option>
+                      <option>Administração de imóvel</option>
+                      <option>Outros</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="field">
+                <label class="label">Mensagem</label>
+                <div class="control">
+                  <textarea name="mensagem" class="textarea" placeholder="Texto"></textarea>
+                </div>
+              </div>
+        
+              <div class="field">
+                <div class="control">
+                  <label class="checkbox">
+                    <input type="checkbox" />
+                    Aceito o envio de informações sobre
+                    <a href="#">Imóveis</a>
+                  </label>
+                </div>
+              </div>
+        
+              <div class="field is-grouped">
+                <div class="control">
+                  <button type="submit" class="button is-medium">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+    </div>
+</div>
+
+
+
+
+  {% endblock %}
