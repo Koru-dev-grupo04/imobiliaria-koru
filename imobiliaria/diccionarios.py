@@ -167,6 +167,9 @@ def mostrar_imoveis(tipo):
         case "aluguel":
             return {x:y for x,y in imoveis.items() if y['tipo'] == "Aluguel"}
 
+def criar_imovel(imovel):
+    imoveis[gerar_id()] = imovel
+
 def teste():
     return 
 
