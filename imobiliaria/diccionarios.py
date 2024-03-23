@@ -158,8 +158,17 @@ def filtrar_imoveis():
     else:
         print('Este valor nao e valido')
 
-def mostrar_imoveis():
-    return imoveis
+def mostrar_imoveis(tipo):
+    match tipo:
+        case "todos":
+            return imoveis
+        case "venda":
+            return {x:y for x,y in imoveis.items() if y['tipo'] == "Venda"}
+        case "aluguel":
+            return {x:y for x,y in imoveis.items() if y['tipo'] == "Aluguel"}
+
+def teste():
+    return 
 
 def mostrar_imovel(ident:int):
     return imoveis[ident]

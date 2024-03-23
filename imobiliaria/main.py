@@ -9,7 +9,17 @@ app = Flask(__name__)
 #  Home do site
 @app.route('/')
 def index():
-    dic = diccionarios.mostrar_imoveis()
+    dic = diccionarios.mostrar_imoveis("todos")
+    return render_template('index.html', outro=dic)
+
+@app.route('/venda')
+def venda():
+    dic = diccionarios.mostrar_imoveis("venda")
+    return render_template('index.html', outro=dic)
+
+@app.route('/aluguel')
+def alugel():
+    dic = diccionarios.mostrar_imoveis("aluguel")
     return render_template('index.html', outro=dic)
 
 # Visão de cada imovel individual 
