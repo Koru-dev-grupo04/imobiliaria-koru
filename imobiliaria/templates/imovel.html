@@ -2,28 +2,32 @@
 
 {% block component %}
 
-<div class="container">
+<div class="container mt-5">
     <div class="row">
       <div class="col">
-        <img src={{ imagem }} class="img-thumbnail">
+        <img src="{{ imagem }}" class="img-fluid mw-100">
       </div>
       <div class="col">
         <dl class="row">
-            <dt class="col-sm-3">Tipo</dt>
-            <dd class="col-sm-9">{{ tipo }}</dd>
+            <dt class="col-sm-3 fs-5">Tipo</dt>
+            <dd class="col-sm-9 fs-5">{{ tipo }}</dd>
           
-            <dt class="col-sm-3">Valor</dt>
-            <dd class="col-sm-9">{{ valor }}</dd>
+            <dt class="col-sm-3 fs-5">Valor</dt>
+            <dd class="col-sm-9 fs-5">{{ valor }}</dd>
           
-            <dt class="col-sm-3">Cidade</dt>
-            <dd class="col-sm-9">{{ cidade }}</dd>
+            <dt class="col-sm-3 fs-5">Cidade</dt>
+            <dd class="col-sm-9 fs-5">{{ cidade }}</dd>
           
-            <dt class="col-sm-3">Endereço</dt>
-            <dd class="col-sm-9">{{ endereco }}</dd>
+            <dt class="col-sm-3 fs-5">Endereço</dt>
+            <dd class="col-sm-9 fs-5">{{ endereco }}</dd>
 
-            <dt class="col-sm-3">Descrição</dt>
-            <dd class="col-sm-9">{{ descricao }}</dd>
+            <dt class="col-sm-3 fs-5">Descrição</dt>
+            <dd class="col-sm-9 fs-5">{{ descricao }}</dd>
           </dl>
+          <form  method="POST" enctype="multipart/form-data" action="" data-toggle="validation" class="needs-validation d-flex justify-content-start mt-5">
+            <input id="bt_barra_stilo" name="editar" class="btn btn-outline-dark fs-5 me-2" type="submit" value="Editar">
+            <input id="bt_barra_stilo" name="excluir" class="btn btn-outline-dark fs-5 me-2" type="submit" value="Excluir">
+        </form>
       </div>
     </div>
 </div>

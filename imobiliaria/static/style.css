@@ -1,0 +1,42 @@
+:root {
+    --azul-escuro : #101E26;
+    --azul-claro: #84A9BF;
+    --blanco: #fff;
+    --preto: #000;
+}
+
+#barra {
+    background-color: var(--azul-claro);
+}
+
+#bt_barra_stilo {
+    background-color: var(--blanco);
+    font-weight: 500;
+}
+
+#bt_barra_stilo:hover {
+    background-color: var(--azul-claro);
+    font-weight: 500;
+    border: 0.5px solid  var(--blanco);
+}
+
+#bt_stilo {
+    background-color: var(--azul-claro);
+    color: var(--azul-escuro);
+    border: var(--azul-claro);
+}
+
+#bt_stilo:hover {
+    background-color: var(--blanco);
+    color: var(--azul-escuro);
+    border: 0.5px solid  var(--azul-escuro);
+}
+
+#cd_stilo {
+    border: 0.5px solid  var(--azul-claro);
+}
+
+.nav-link:hover {
+    font-weight: 700;
+    color: var(--preto);
+}

@@ -1,5 +1,6 @@
 # Acrescentando as extenções previamente aplicadas na VM
-from flask import Flask, render_template,request, redirect
+from flask import Flask, render_template,request, redirect, url_for
+
 import gspread
 import diccionarios
 
@@ -72,11 +73,24 @@ def editar(id):
 
 
 # Visão de cada imovel individual 
-@app.route('/imovel/<int:id>')
+@app.route('/imovel/<int:id>', methods=['GET', 'POST'])
 def imovel(id):
+
+    if request.method == 'POST':
     
-    imovel = diccionarios.mostrar_imovel(id)
-    imovel['id'] = id
-    return render_template('imovel.html', **imovel ) 
+        if "excluir" in request.form:
+            diccionarios.apagar_imoveis(id)
+            return redirect(url_for('index'))
+    else: 
+        imovel = diccionarios.mostrar_imovel(id)
+        imovel['id'] = id
+        return render_template('imovel.html', **imovel )
+
+# Visão de criação de imoveis 
+@app.route('/novo_imovel')
+def criar_imovel():
+
+    return render_template('criar.html' )  
 
 app.run(debug=True)
+ 
