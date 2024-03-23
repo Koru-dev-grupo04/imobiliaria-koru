@@ -2,28 +2,32 @@
 
 {% block component %}
 
-<div class="container">
+<div class="container mt-5">
     <div class="row">
       <div class="col">
-        <img src={{ imagem }} class="img-thumbnail">
+        <img src="{{ imagem }}" class="img-fluid mw-100">
       </div>
       <div class="col">
         <dl class="row">
-            <dt class="col-sm-3">Tipo</dt>
-            <dd class="col-sm-9">{{ tipo }}</dd>
+            <dt class="col-sm-3 fs-5">Tipo</dt>
+            <dd class="col-sm-9 fs-5">{{ tipo }}</dd>
           
-            <dt class="col-sm-3">Valor</dt>
-            <dd class="col-sm-9">{{ valor }}</dd>
+            <dt class="col-sm-3 fs-5">Valor</dt>
+            <dd class="col-sm-9 fs-5">{{ valor }}</dd>
           
-            <dt class="col-sm-3">Cidade</dt>
-            <dd class="col-sm-9">{{ cidade }}</dd>
+            <dt class="col-sm-3 fs-5">Cidade</dt>
+            <dd class="col-sm-9 fs-5">{{ cidade }}</dd>
           
-            <dt class="col-sm-3">Endereço</dt>
-            <dd class="col-sm-9">{{ endereco }}</dd>
+            <dt class="col-sm-3 fs-5">Endereço</dt>
+            <dd class="col-sm-9 fs-5">{{ endereco }}</dd>
 
-            <dt class="col-sm-3">Descrição</dt>
-            <dd class="col-sm-9">{{ descricao }}</dd>
+            <dt class="col-sm-3 fs-5">Descrição</dt>
+            <dd class="col-sm-9 fs-5">{{ descricao }}</dd>
           </dl>
+          <form class="d-flex justify-content-start mt-5">
+            <button id="bt_barra_stilo" class="btn btn-outline-dark fs-5 me-2" type="button">Editar</button>
+            <button id="bt_barra_stilo" class="btn btn-outline-dark fs-5 me-2" type="button">Excluir</button>
+        </form>
       </div>
     </div>
 </div>
