@@ -12,27 +12,27 @@
     <header>
         <nav id="barra" class="navbar navbar-expand-lg navbar-light ml-5">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url_for ('index')}}" > <img src="../static/Logo Imobiliaria Koru.png"> </a>
+              <a class="navbar-brand" href="{{ url_for ('index')}}" > <img src="../static/Logo Imobiliaria Koru.png"> </a>
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav fs-5">
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Aluguel</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Vendas</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="">Contato</a>
-                    </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/venda">Venda</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/aluguel">Aluguel</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/contato">Contato</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/adm">Administração</a>
+                  </li>
                 </ul>
-                <form class="container-fluid justify-content-start">
-                    <a id="bt_barra_stilo" href="{{ url_for ('criar_imovel')}}" class="btn btn-outline-dark me-2" type="button">Criar</a>
-                </form>
-              </div>
+              </div>          
           </nav>
     </header>
     <main>
