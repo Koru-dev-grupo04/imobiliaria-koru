@@ -128,35 +128,6 @@ def gerar_id():
     x = len(imoveis) + 1
     return x
 
-def crear_imovel():
-    tipo = int(input('Ingrese o tipo de Imovel: (1) Aluguel  (2) Venda'))
-    cidade = (input('Informe a cidade: '))
-    endereco = (input('Informe o endereço: '))
-    descricao = (input('Descrição do imovel: '))
-    valor = (input('Informe o valor: '))
-    if tipo == 1:
-        imoveis[gerar_id()] = {'tipo': 'Aluguel', 'cidade': cidade, 'endereco': endereco, 'descricao': descricao, 'valor': valor}
-    elif tipo == 2:
-        imoveis[gerar_id()] = {'tipo': 'Vendas', 'cidade': cidade, 'endereco': endereco, 'descricao': descricao, 'valor': valor}
-    else:
-        print('Este valor nao e valido')
-
-def filtrar_imoveis():
-    lista = int(input('Ingrese o tipo de Imovel que deseja visualizar: (1) Aluguel  (2) Venda (3)Todos'))
-    if lista == 1:
-        for im in imoveis.values():
-            for value in im.values():
-                if value == 'Aluguel':
-                    return im
-    elif lista == 2:
-        for im in imoveis.values():
-            for value in im.values():
-                if value == 'Venda':
-                    return im
-    elif lista == 3:
-        return imoveis
-    else:
-        print('Este valor nao e valido')
 
 def mostrar_imoveis(tipo):
     match tipo:
@@ -167,17 +138,18 @@ def mostrar_imoveis(tipo):
         case "aluguel":
             return {x:y for x,y in imoveis.items() if y['tipo'] == "Aluguel"}
 
+
 def criar_imovel(imovel):
     imoveis[gerar_id()] = imovel
 
-def teste():
-    return 
 
 def mostrar_imovel(ident:int):
     return imoveis[ident]
 
+
 def apagar_imoveis(id:int):
     del imoveis[id]
+
 
 def modif_imoveis(id:int, dados_im: dict):
     imoveis[id] = dados_im
