@@ -4,7 +4,7 @@ from flask import Flask, render_template,request, redirect, url_for
 import gspread
 import diccionarios
 
-gc = gspread.service_account(filename='imobiliaria-koru-2.json')
+gc = gspread.service_account(filename='../imobiliaria-koru-2.json')
 sp = gc.open('contato-imobiliaria')
 
 spContacts = sp.get_worksheet(0)
