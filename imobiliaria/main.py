@@ -7,26 +7,30 @@ import diccionarios
 # Inicialização do Flask
 app = Flask(__name__)
 
-#  Home do site
+#  Home do site (Read)
 @app.route('/')
 def index():
     dic = diccionarios.mostrar_imoveis("todos")
     return render_template('index.html', outro=dic)
 
+#  Filtro dos imóveis 'Venda' (Read)
 @app.route('/venda')
 def venda():
     dic = diccionarios.mostrar_imoveis("venda")
     return render_template('index.html', outro=dic)
 
+#  Filtro dos imóveis 'Aluguel' (Read)
 @app.route('/aluguel')
 def aluguel():
     dic = diccionarios.mostrar_imoveis("aluguel")
     return render_template('index.html', outro=dic)
 
+# Site de contato
 @app.route('/contato')
 def contato():
     return render_template('contato.html')
 
+# Função para adicionar imóveis (Create)
 @app.route('/adicionar', methods= ['GET','POST'])
 def adiciona_imovel():
     if request.method == 'POST':
@@ -42,11 +46,13 @@ def adiciona_imovel():
     else:
         return render_template("cadastro.html") 
 
+# Função para remover imóveis (Delete)
 @app.route('/remover/<int:id>')
 def remover_imovel(id):
     diccionarios.apagar_imoveis(id)
     return redirect('/')
 
+# Função para editar imóveis (Update)
 @app.route('/editar/<int:id>', methods=['GET', 'POST'])
 def editar(id):
     if request.method == 'POST':
@@ -64,7 +70,7 @@ def editar(id):
         imovel['id'] = id
         return render_template('cadastro.html',**imovel)
 
-# Visão de cada imovel individual 
+# Função para mostrar de cada imovel individualmente (read)
 @app.route('/imovel/<int:id>', methods=['GET', 'POST'])
 def imovel(id):
 
@@ -77,13 +83,3 @@ def imovel(id):
         imovel = diccionarios.mostrar_imovel(id)
         imovel['id'] = id
         return render_template('imovel.html', **imovel )
-
-# Visão de criação de imoveis 
-@app.route('/novo_imovel')
-
-def criar_imovel():
-
-    return render_template('criar.html' )  
-
-app.run(debug=True)
- 
