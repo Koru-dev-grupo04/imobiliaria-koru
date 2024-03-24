@@ -3,75 +3,44 @@
 {% block component %}
 
 <div class="d-flex justify-content-center">
-    <div class="container">
-        <h2>Entre em contato</h2>
-        <form id="card-cont" class="box" action="/" method='POST'>
-            <div class="column is-4 is-offset-4">
-              <div class="field">
-                <label class="label">Nome</label>
-                <div class="control">
-                  <input 
-                    class="input" 
-                    type="text" 
-                    name="Nome" 
-                    placeholder="Nome Sobrenome" />
-                </div>
-              </div>
-        
-              <div class="field">
-                <label class="label">Email</label>
-                <div class="control">
-                  <input
-                    class="input"
-                    type="email"
-                    name="Email"
-                    placeholder="usuario@contato.aq"
-                  />
-                </div>
-              </div>
-        
-              <div class="field">
-                <label class="label">Assunto</label>
-                <div class="control">
-                  <div class="select">
-                    <select>
-                      <option>Escolha uma opção</option>
-                      <option>Mais informações sobre imóvel</option>
-                      <option>Administração de imóvel</option>
-                      <option>Outros</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-        
-              <div class="field">
-                <label class="label">Mensagem</label>
-                <div class="control">
-                  <textarea name="mensagem" class="textarea" placeholder="Texto"></textarea>
-                </div>
-              </div>
-        
-              <div class="field">
-                <div class="control">
-                  <label class="checkbox">
-                    <input type="checkbox" />
-                    Aceito o envio de informações sobre
-                    <a href="#">Imóveis</a>
-                  </label>
-                </div>
-              </div>
-        
-              <div class="field is-grouped">
-                <div class="control">
-                  <button type="submit" class="button is-medium">Enviar</button>
-                </div>
-              </div>
-            </div>
-          </form>
-    </div>
+  <div class="container-md mb-3">
+    <h1 class="display-6 my-5">Entre em contato</h1>
+    <form method='POST'>
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Nome Completo</label>
+        <input type="text" class="form-control" id="nome" name="Nome" placeholder="Nome Sobrenome">
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="Email" placeholder="usuario@contato.im">
+      </div>
+
+      <div class="mb-3">
+        <label class="label">Assunto</label>
+          <select class="form-select" name="Assunto">
+            <option>Escolha uma opção</option>
+            <option>Mais informações sobre imóvel</option>
+            <option>Administração de imóvel</option>
+            <option>Outros</option>
+          </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="mensagem" class="form-label">Mensagem</label>
+        <textarea type="text" class="form-control" name="Mensagem" rows="2" placeholder="Texto"></textarea>
+      </div>
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" value="" id="infos">
+        <label class="form-check-label" for="infos">
+          Acepto o envio de informações sobre ofertas e novos lançamentos
+        </label>
+      </div>
+
+      <input name="criar" type="submit" class="btn btn-outline-dark fs-5 me-2" value="Enviar">
+  </div>
+  </form>
 </div>
-
-
-
-
-  {% endblock %}
+{% endblock %}

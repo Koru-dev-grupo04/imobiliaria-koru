@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "imobiliaria-koru-2",
+  "private_key_id": "3ac2ca92511bfe4b231095268d3a7e9e9b5a30e6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCEyN/jEmmyBrY+\nYjLQ/h8g33SasEuRKJQLzu62Dk45CD8k9kCH8RRMyLOHyKUu97CAp0NXAP0QaDYr\ni5nCOmlDr8z49dFgmg5cvSwF+NIVU4zTgXgC9Dxs5JBaOg76EyNjhF4RXYdkdUpU\nUbWbQCAWryfk4HbI3rqTDU8rtGIrlmaO+Oj8rvFiLF9BkGCR3FMf1IH+4ZBGoCbU\nzZDZj6agvTjoX/DOAWg86nvD5ievCB02Xw3F/7AHQGX+DfqaVctTJMOi178pEBgL\n3eqMcurgmXDu3I9aJdROl+rO34EMfRtKp7njklxrx5FypAEZy0VRtDtkD9oHUlCp\n6vNuYHK9AgMBAAECggEALt5qbE+ZAC4vUJi/wBYarbNCCMHWgn+0tfBOQPOOt8HJ\n7AWBpJo7JJkpCXIQoCHsapTfh4vBR3PJPxiQ5sZQVoRskKnPxE3MaP6a1ebMXJu3\nlwZZco178KHCtB5PIAT2Vk+oFnARdKuT12xZ8lkxmmAr8DUsqF05tOMbQV1z01dK\nZITU1G5JlVPn6FEQsIxdS0uVfgDM/Fk2OSNkIXEagelCs7EPK49RbNcYdGPc/O0x\nDcH4BRMdHiv2e0twqSy0p3m8CeKFcdI248H6/Lp0O+ki7y2gXIIPgvdZKT7JW9kR\nJ1okY5KenscEGbqRqtpSbuinaWZXaFyLzVMUUGDznwKBgQC6mBs2KposbrgDshnH\nQlXG3jsjGOxYSHDH/nbm/wAuTCKmdiw63B6B/LKYmWyb33fvTeXxgRv1g9XtEST2\ny4EGHsChNY++MnAijjyc89QgSnwZjnubZUPgaavFGVdtj1NiM1oY4b7R7lQNJOcr\n5+xEYjY1741rWLCJ2v1VJOZiuwKBgQC2LOnHi63cMJNvknDFrmZOjVzqb+UxvRPb\nnwxR8R9v4u3uOmgL7RbL+g+USc57+J5ciyzYy4lRMxwRmqLGb7bopjO+yWTlLTtL\nSRZAyiqdHtQK+WLPzNxf+JyTkpKOHJ46PAwAN4nS3JtJSbJIKAcEgeuLccGyeXIr\n5I8wuMhU5wKBgBgFfvNRNrnjoxLuubzaQFqyv2A8VCjlYoeMrdf9GhPbv1Y4vmbx\ncYgAdSmKDt5ePX10RNb7bRMFXuP/IggXmMul59yZHaE5sw/vycPW7AcgL6vGmQkf\nV0ars+5S3dt/6RcqTz4Gyd8S1IVAq/YODG+dSSdWaJlaOJf2tkhg0LwDAoGAH1r7\noezYr91sgvehkWTDFyIdq/w2Zqk0kch+RlxKHOfiK+7Bmcvk8JbJt6w8bfoMx8Ds\npyPhLqitXBpRifYQdVql7WCcjRWL7xlVSzGAxCpaNMlXyIxqIdqYmI3Ry8QBN+S9\n7AujHTf7QlH87Y52JsB12jpqLF3a2NMuEiS71mECgYAdC/S+FEpbv06ZA60FbaCI\njqNearVy6s6yegc1Gi+hDL+gQog7gB80cPaMgbbA2M2EvyMG38kYUzxFQDBXLkUU\nkq7fK5h5+nO/l/fIzGrFZ2J9fu8pQJEApcr1OywiwKYGDjewnFyzCvQjwIl5AUef\n+VFeiNKveS4jajtrACtEKw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "imobiliaria-koru-adm@imobiliaria-koru-2.iam.gserviceaccount.com",
+  "client_id": "104070398089583523018",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/imobiliaria-koru-adm%40imobiliaria-koru-2.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

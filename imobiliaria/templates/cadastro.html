@@ -6,10 +6,6 @@
     <h1 class="display-6 my-5">Cadastro de Imóvel</h1>
     <form method="POST">
       <div class="mb-3">
-        <label for="descricao" class="form-label">Descrição</label>
-        <input type="text" class="form-control" id="descricao1" name="descricao" value="{{descricao}}">
-      </div>
-      <div class="mb-3">
           <select class="form-select" name="tipo">
               <option selected>Tipo de negócio</option>
               <option value="Venda">Venda</option>
@@ -31,6 +27,10 @@
       <div class="mb-3">
           <label for="imagem" class="form-label">Link de imagem</label>
           <input type="text" class="form-control" id="imagem" name="imagem" value="{{imagem}}">
+      </div>
+      <div class="mb-3">
+        <label for="descricao" class="form-label">Descrição</label>
+        <textarea type="text" class="form-control" id="descricao1" name="descricao" rows="2" value="{{descricao}}"></textarea>
       </div>
       <input name="criar" type="submit" class="btn btn-outline-dark fs-5 me-2" value="Enviar">
     </form>

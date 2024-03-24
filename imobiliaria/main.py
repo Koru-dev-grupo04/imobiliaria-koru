@@ -4,6 +4,13 @@ from flask import Flask, render_template,request, redirect, url_for
 import gspread
 import diccionarios
 
+gc = gspread.service_account(filename='imobiliaria-koru-2.json')
+sp = gc.open('contato-imobiliaria')
+
+spContacts = sp.get_worksheet(0)
+
+app = Flask(__name__)
+
 # Inicialização do Flask
 app = Flask(__name__)
 
@@ -26,9 +33,13 @@ def aluguel():
     return render_template('index.html', outro=dic)
 
 # Site de contato
-@app.route('/contato')
+@app.route('/contato', methods=['POST','GET'])
 def contato():
-    return render_template('contato.html')
+    if request.method == 'POST':
+        spContacts.append_row([request.form['Nome'],request.form['Email'], request.form['Assunto'], request.form['Mensagem']])
+        return redirect('/')
+    else:
+        return render_template('contato.html')
 
 # Função para adicionar imóveis (Create)
 @app.route('/adicionar', methods= ['GET','POST'])
@@ -83,3 +94,5 @@ def imovel(id):
         imovel = diccionarios.mostrar_imovel(id)
         imovel['id'] = id
         return render_template('imovel.html', **imovel )
+
+app.run(debug=True)
