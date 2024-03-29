@@ -1,10 +1,13 @@
 # Acrescentando as extenções previamente aplicadas na VM
 from flask import Flask, render_template,request, redirect, url_for
+from pathlib import Path
 
 import gspread
 import diccionarios
 
-gc = gspread.service_account(filename='../imobiliaria-koru-2.json')
+file_path = Path('../') / 'imobiliaria-koru-2.json'
+
+gc = gspread.service_account(file_path)
 sp = gc.open('contato-imobiliaria')
 
 spContacts = sp.get_worksheet(0)
@@ -45,15 +48,27 @@ def contato():
 @app.route('/adicionar', methods= ['GET','POST'])
 def adiciona_imovel():
     if request.method == 'POST':
-        imovel = {}
-        imovel['imagem'] = request.form["imagem"]
-        imovel['tipo'] = request.form['tipo']
-        imovel['cidade'] = request.form['cidade']
-        imovel['endereco'] = request.form['endereco']
-        imovel['descricao'] = request.form['descricao']
-        imovel['valor'] = request.form['valor']
-        diccionarios.criar_imovel(imovel)
-        return redirect("/")
+        imagem = request.form['imagem']
+        if imagem == '':
+            imovel = {}
+            imovel['imagem'] = 'https://www.shutterstock.com/image-illustration/no-picture-available-placeholder-thumbnail-600nw-2179364083.jpg'
+            imovel['tipo'] = request.form['tipo']
+            imovel['cidade'] = request.form['cidade']
+            imovel['endereco'] = request.form['endereco']
+            imovel['descricao'] = request.form['descricao']
+            imovel['valor'] = request.form['valor']
+            diccionarios.criar_imovel(imovel)
+            return redirect("/")
+        else:
+            imovel = {}
+            imovel['imagem'] = request.form["imagem"]
+            imovel['tipo'] = request.form['tipo']
+            imovel['cidade'] = request.form['cidade']
+            imovel['endereco'] = request.form['endereco']
+            imovel['descricao'] = request.form['descricao']
+            imovel['valor'] = request.form['valor']
+            diccionarios.criar_imovel(imovel)
+            return redirect("/")
     else:
         return render_template("cadastro.html") 
 
