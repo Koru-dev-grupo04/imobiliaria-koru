@@ -4,7 +4,10 @@ from pathlib import Path
 
 import gspread
 import diccionarios
+import sqlite3
 
+# Configuração do caminho para o arquivo Json do google spreadsheets
+# Está sendo usada a biblioteca pathlib para permitir compatibilidade em diversos SO
 file_path = Path('../') / 'imobiliaria-koru-2.json'
 
 gc = gspread.service_account(file_path)
@@ -12,27 +15,204 @@ sp = gc.open('contato-imobiliaria')
 
 spContacts = sp.get_worksheet(0)
 
-app = Flask(__name__)
-
 # Inicialização do Flask
 app = Flask(__name__)
+
+# Configuração do banco de dados
+DATABASE = Path('../') / 'imobiliaria2.db'
+
+# Função que se conecta ao banco de dados
+def get_db():
+    db = sqlite3.connect(DATABASE)
+    return db
+
+# Função para criar uma nova tabela chamada IMOVEIS no banco de dados 
+def create_table():
+    db = get_db()
+    cursor = db.cursor()
+    
+    # Define a estrutura da tabela
+    create_table_sql = '''
+        CREATE TABLE IF NOT EXISTS IMOVEIS (
+            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            DESCRICAO TEXT NOT NULL,
+            ENDERECO TEXT NOT NULL,
+            VALOR INTEGER NOT NULL,
+            CIDADE VARCHAR(50) NOT NULL,
+            TIPO VARCHAR(20) NOT NULL,
+            IMAGEM TEXT NOT NULL
+        )
+    '''
+    # Executa o comando SQL para criar a tabela
+    cursor.execute(create_table_sql)
+    
+    # Commit as mudanças
+    db.commit()
+    
+    # Fechar o cursor e a conexão com o banco de dados
+    cursor.close()
+    db.close()
+
+
+
+def is_table_empty():
+    db = get_db()
+    cursor = db.cursor()
+
+    # Define a query SQL para contar as linhas na tabela.
+    count_query = 'SELECT COUNT(*) FROM IMOVEIS'
+
+    # Executa a query SQL
+    cursor.execute(count_query)
+
+    # Fetch the result
+    row_count = cursor.fetchone()[0]
+
+    # Fecha o cursor e a conexão com o banco de dados.
+    cursor.close()
+    db.close()
+
+    # Retorna verdadeiro se a tabela é vazia (row_count is 0), caso contrário, retorna falso.
+    return row_count == 0
+
+def populate_table():
+    db = get_db()
+    cursor = db.cursor()
+    # Define a query SQL de inserção do imóvel cadastrado no dicionário
+    sql_insert = '''
+        INSERT INTO IMOVEIS (
+        IMAGEM, TIPO, CIDADE, ENDERECO, DESCRICAO, VALOR
+        ) VALUES (?, ?, ?, ?, ?, ?)
+    '''
+    for key,value in diccionarios.imoveis.items():
+        cursor.execute(sql_insert,(
+            value['imagem'],
+            value['tipo'],
+            value['cidade'],
+            value['endereco'],
+            value['descricao'],
+            value['valor'],
+            ))
+    db.commit()
+    cursor.close()
+    db.close()
+
+
+# Seleciona um imóvel do banco de dados
+def seleciona_imovel(id):
+    db = get_db()
+    cursor = db.cursor()
+    sql_select_unico = '''
+        SELECT * FROM IMOVEIS WHERE ID = ?
+'''
+    cursor.execute(sql_select_unico,(id,))
+    imovel_valores = cursor.fetchone()
+    imovel_chaves = ('id','descricao', 'endereco', 'valor', 'cidade', 'tipo', 'imagem')
+    imovel = dict(zip(imovel_chaves,imovel_valores))
+    return imovel
+
+# Mostra os imóveis do banco de dados
+def mostra_imoveis(tipo=0):
+    db = get_db()
+    cursor = db.cursor()
+    if tipo != 0:
+        sql_select = '''
+            SELECT * FROM IMOVEIS WHERE TIPO = ?
+    '''
+        cursor.execute(sql_select,(tipo,))
+    else:
+        sql_select = '''
+            SELECT * FROM IMOVEIS
+    '''
+        cursor.execute(sql_select)
+
+    imoveis_valores = cursor.fetchall()
+    cursor.close()
+    db.close()
+    imovel_chaves = ('id','descricao', 'endereco', 'valor', 'cidade', 'tipo', 'imagem')
+    imoveis = {}
+    for imovel_valores in imoveis_valores:
+        imoveis[imovel_valores[0]] = dict(zip(imovel_chaves,imovel_valores))
+    return imoveis
+
+# Deleta um imóvel do banco de dados
+def deleta_imovel(id):
+    db = get_db()
+    cursor = db.cursor()
+    # Define a query SQL de inserção do imóvel cadastrado no dicionário
+    sql_delete = '''
+        DELETE FROM IMOVEIS WHERE ID = ?
+    '''
+    cursor.execute(sql_delete,(id, ))
+    db.commit()
+    cursor.close()
+    db.close()
+    print(mostra_imoveis())
+
+
+# Adiciona um novo imóvel ao banco de dados
+def cria_imovel(imovel):
+    db = get_db()
+    cursor = db.cursor()
+    # Define a query SQL de inserção do imóvel cadastrado no dicionário
+    sql_insert = '''
+        INSERT INTO IMOVEIS (
+        IMAGEM, TIPO, CIDADE, ENDERECO, DESCRICAO, VALOR
+        ) VALUES (?, ?, ?, ?, ?, ?)
+    '''
+    cursor.execute(sql_insert,(
+            imovel['imagem'],
+            imovel['tipo'],
+            imovel['cidade'],
+            imovel['endereco'],
+            imovel['descricao'],
+            imovel['valor'],
+            ))
+    db.commit()
+    cursor.close()
+    db.close()    
+    
+# Atualiza um imóvel no banco de dados
+def atualiza_imovel(id,imovel):
+    db = get_db()
+    cursor = db.cursor()
+    # Define a query SQL de atualização do imóvel cadastrado no dicionário
+    sql_update = '''
+        UPDATE IMOVEIS 
+        SET 
+        IMAGEM = ?, TIPO = ?, CIDADE = ?, ENDERECO = ?, DESCRICAO = ?, VALOR = ?
+        WHERE ID = ?
+    '''
+    cursor.execute(sql_update,(
+            imovel['imagem'],
+            imovel['tipo'],
+            imovel['cidade'],
+            imovel['endereco'],
+            imovel['descricao'],
+            imovel['valor'],
+            id
+            ))
+    db.commit()
+    cursor.close()
+    db.close() 
+
 
 #  Home do site (Read)
 @app.route('/')
 def index():
-    dic = diccionarios.mostrar_imoveis("todos")
+    dic = mostra_imoveis()
     return render_template('index.html', outro=dic)
 
 #  Filtro dos imóveis 'Venda' (Read)
 @app.route('/venda')
 def venda():
-    dic = diccionarios.mostrar_imoveis("venda")
+    dic = mostra_imoveis("Venda")
     return render_template('index.html', outro=dic)
 
 #  Filtro dos imóveis 'Aluguel' (Read)
 @app.route('/aluguel')
 def aluguel():
-    dic = diccionarios.mostrar_imoveis("aluguel")
+    dic = mostra_imoveis("Aluguel")
     return render_template('index.html', outro=dic)
 
 # Site de contato
@@ -57,7 +237,7 @@ def adiciona_imovel():
             imovel['endereco'] = request.form['endereco']
             imovel['descricao'] = request.form['descricao']
             imovel['valor'] = request.form['valor']
-            diccionarios.criar_imovel(imovel)
+            cria_imovel(imovel)
             return redirect("/")
         else:
             imovel = {}
@@ -67,7 +247,7 @@ def adiciona_imovel():
             imovel['endereco'] = request.form['endereco']
             imovel['descricao'] = request.form['descricao']
             imovel['valor'] = request.form['valor']
-            diccionarios.criar_imovel(imovel)
+            cria_imovel(imovel)
             return redirect("/")
     else:
         return render_template("cadastro.html") 
@@ -75,7 +255,7 @@ def adiciona_imovel():
 # Função para remover imóveis (Delete)
 @app.route('/remover/<int:id>')
 def remover_imovel(id):
-    diccionarios.apagar_imoveis(id)
+    deleta_imovel(id)
     return redirect('/')
 
 # Função para editar imóveis (Update)
@@ -89,11 +269,10 @@ def editar(id):
         imovel['endereco'] = request.form['endereco']
         imovel['descricao'] = request.form['descricao']
         imovel['valor'] = request.form['valor']
-        diccionarios.modif_imoveis(id,imovel)
+        atualiza_imovel(id,imovel)
         return redirect("/")
     else:
-        imovel = diccionarios.mostrar_imovel(id)
-        imovel['id'] = id
+        imovel = seleciona_imovel(id)
         return render_template('cadastro.html',**imovel)
 
 # Função para mostrar de cada imovel individualmente (read)
@@ -103,11 +282,14 @@ def imovel(id):
     if request.method == 'POST':  
     
         if "excluir" in request.form:
-            diccionarios.apagar_imoveis(id)
-            return redirect(url_for('index'))
+            deleta_imovel(id)
+            return redirect('/')
     else: 
-        imovel = diccionarios.mostrar_imovel(id)
-        imovel['id'] = id
-        return render_template('imovel.html', **imovel )
+        imovel = seleciona_imovel(id)
+        return render_template('imovel.html',**imovel)
+
+create_table()
+if is_table_empty():
+    populate_table()
 
 app.run(debug=True)
