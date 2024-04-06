@@ -19,7 +19,7 @@ spContacts = sp.get_worksheet(0)
 app = Flask(__name__)
 
 # Configuração do banco de dados
-DATABASE = Path('../') / 'imobiliaria2.db'
+DATABASE = Path('../') / 'data_imoveis.db'
 
 # Função que se conecta ao banco de dados
 def get_db():
