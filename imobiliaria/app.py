@@ -1,10 +1,14 @@
-# Acrescentando as extenções previamente aplicadas na VM
-from flask import Flask, render_template,request, redirect, url_for
+from flask import Flask, request, jsonify , render_template, redirect
 from pathlib import Path
-
+from imovel import Imovel
 import gspread
-import diccionarios
 import sqlite3
+import diccionarios
+
+from imovel import Imovel
+from db_connector import DBconnector
+
+#-- Google Spreadsheet -------------------------------------------------------------------------------
 
 # Configuração do caminho para o arquivo Json do google spreadsheets
 # Está sendo usada a biblioteca pathlib para permitir compatibilidade em diversos SO
@@ -15,11 +19,78 @@ sp = gc.open('contato-imobiliaria')
 
 spContacts = sp.get_worksheet(0)
 
-# Inicialização do Flask
+#-- Inicialização do App ---------------------------------------------------------------
+
 app = Flask(__name__)
 
-# Configuração do banco de dados
+#-- Setup do caminho do banco de dados ---------------------------------------------------
+
 DATABASE = Path('../') / 'data_imoveis.db'
+
+db = DBconnector(DATABASE)
+
+#--API---------------------------------------------------------------------------------------------
+    
+#CREATE
+@app.route("/api/imoveis", methods = ["POST"])
+def create_imovel():
+    data = request.get_json()
+    imovel = Imovel(
+        descricao= data['descricao'],
+        endereco = data['endereco'],
+        valor = data['valor'],
+        cidade = data['cidade'],
+        tipo = data['tipo'],
+        imagem = data['imagem']
+        )
+    imovel.save(db.connect())
+    return jsonify(imovel.to_dict())
+
+
+#READ
+@app.route("/api/imoveis", methods=['GET'])
+def get_imoveis():
+    imoveis = Imovel.get_all(db.connect())
+    return jsonify(imoveis)
+
+@app.route("/api/imoveis/<int:id_imovel>", methods=['GET'])
+def get_imovel(id_imovel):
+    imovel = Imovel.get_by_id(id_imovel,db.connect())
+    if imovel:
+        return jsonify(imovel.to_dict())
+    else:
+        return jsonify({"Erro": "Imóvel não localizado!"}), 404
+
+
+#UPDATE 
+@app.route("/api/imoveis/<int:id_imovel>", methods=['PUT'])
+def update_imovel(id_imovel):
+    data = request.get_json()
+    imovel = Imovel.get_by_id(id_imovel,db.connect())
+    if imovel:
+        imovel.descricao= data['descricao']
+        imovel.endereco = data['endereco']
+        imovel.valor = data['valor']
+        imovel.cidade = data['cidade']
+        imovel.tipo = data['tipo']
+        imovel.imagem = data['imagem']
+        imovel.save(db.connect())
+        return jsonify(imovel.to_dict())
+    else:
+        return jsonify({"Erro":"Imóvel não encontrado"}), 404
+
+
+#DELETE
+@app.route("/api/imoveis/<int:id_imovel>", methods=['DELETE'])
+def delete_imovel(id_imovel):
+    imovel = Imovel.get_by_id(id_imovel,db.connect())
+    if imovel:
+        imovel.delete(db.connect())
+        return "", 204
+    else:
+        return jsonify({"Erro":"Imóvel não encontrado!"}), 404
+
+#-- Website ----------------------------------------------------------------------------------
 
 # Função que se conecta ao banco de dados
 def get_db():
@@ -293,3 +364,10 @@ if is_table_empty():
     populate_table()
 
 app.run(debug=True)
+
+
+
+
+
+
+
