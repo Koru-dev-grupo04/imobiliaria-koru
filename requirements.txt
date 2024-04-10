@@ -1,3 +1,2 @@
 Flask
 gspread
-os
