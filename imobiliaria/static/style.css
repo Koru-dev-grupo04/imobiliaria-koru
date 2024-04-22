@@ -81,7 +81,7 @@ body {
 
 /*footer*/
 footer {
-    margin-top: 5rem;
+    padding-top: 0.75rem;
     background-color: var(--azul-claro);
 }
 
