@@ -1,3 +1,5 @@
+/* Variaveis gerais */
+
 :root {
     --azul-escuro : #101E26;
     --azul-claro: #84A9BF;
@@ -5,25 +7,45 @@
     --preto: #000;
 }
 
+body {
+    font-family: 'Fira Sans';
+}
+
+/* Barra de navegação */
 #barra {
     background-color: var(--azul-claro);
 }
 
+#link-bar {
+    font-weight: 200;
+    font-size: 150%;
+}
+
 #bt_barra_stilo {
     background-color: var(--blanco);
-    font-weight: 500;
+    font-weight: 200;
+    font-family: 'Fira Sans';
 }
 
 #bt_barra_stilo:hover {
     background-color: var(--azul-claro);
-    font-weight: 500;
+    font-weight: 400;
     border: 0.5px solid  var(--blanco);
+    font-family: 'Fira Sans';
 }
 
+.nav-link:hover {
+    font-weight: 400;
+    color: var(--preto);
+    text-decoration: underline;
+}
+
+/* Botão */
 #bt_stilo {
     background-color: var(--azul-claro);
     color: var(--azul-escuro);
     border: var(--azul-claro);
+    font-weight: 400;
 }
 
 #bt_stilo:hover {
@@ -32,15 +54,32 @@
     border: 0.5px solid  var(--azul-escuro);
 }
 
+/* Card */
 #cd_stilo {
-    border: 0.5px solid  var(--azul-claro);
+    border: 1px solid  var(--azul-escuro);
+    transition: transform .2s;
 }
 
-.nav-link:hover {
+#cd_stilo:hover {
+    transform: scale(1.1)
+}
+
+#card-type {
+    background-color: var(--azul-escuro);
+    color: var(--blanco);
+    text-align: center;
     font-weight: 700;
-    color: var(--preto);
+    font-size: 110%;
 }
 
+.card-text {
+    font-family: 'Raleway';
+    font-size: large;
+    font-weight: 300;
+}
+
+
+/*footer*/
 footer {
     margin-top: 5rem;
     background-color: var(--azul-claro);
@@ -55,4 +94,45 @@ footer {
     margin-bottom: 1rem;
     color: var(--azul-escuro);
     text-align: center;
+}
+
+/*Sobre */
+#cuadro-sobre {
+    padding: .5rem;
+    margin-bottom: 2rem;
+    border: 2px solid var(--azul-escuro);
+    background-color: var(--azul-claro);
+}
+
+
+#sobre {
+    margin: 0rem;
+    padding: 2.5rem;
+}
+
+
+#sobre p {
+    font-family: 'Raleway';
+    font-size: large;
+    font-weight: 300;
+}
+
+/* Parallax */
+
+.parallax {
+    /* The image used */
+    background-image: url("/static/fundo.jpg");
+
+    width: 100%;
+    
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax:before {
+    background-color: rgba(255, 255, 255, 0.5);
 }

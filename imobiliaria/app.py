@@ -61,7 +61,6 @@ def get_imovel(id_imovel):
     else:
         return jsonify({"Erro": "Imóvel não localizado!"}), 404
 
-
 #UPDATE 
 @app.route("/api/imoveis/<int:id_imovel>", methods=['PUT'])
 def update_imovel(id_imovel):
@@ -273,6 +272,10 @@ def atualiza_imovel(id,imovel):
 def index():
     dic = mostra_imoveis()
     return render_template('index.html', outro=dic)
+
+@app.route("/sobre")
+def sobre():
+    return render_template('sobre.html')
 
 #  Filtro dos imóveis 'Venda' (Read)
 @app.route('/venda')
