@@ -30,4 +30,51 @@
       </div>
     </div>
 </div>
+<section class="modal hidden">
+  <div class="flex">
+    <button class="modal-btn-close">⨉</button>
+  </div>
+  <div>
+    <h3>Fale Conosco</h3>
+    <p>
+      Converse agora com um de nossos corretores!
+    </p>
+  </div>
+  <button class="modal-btn">Whatsapp</button>
+</section>
+
+<div class="overlay hidden"></div>
+<button class="modal-btn modal-btn-open">Whatsapp</button>
+
+<script>
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
+const openModalBtn = document.querySelector(".modal-btn-open");
+const closeModalBtn = document.querySelector(".modal-btn-close");
+
+// close modal function
+const closeModal = function () {
+  modal.classList.add("hidden");
+  overlay.classList.add("hidden");
+};
+
+// close the modal when the close button and overlay is clicked
+closeModalBtn.addEventListener("click", closeModal);
+overlay.addEventListener("click", closeModal);
+
+// close modal when the Esc key is pressed
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+    closeModal();
+  }
+});
+
+// open modal function
+const openModal = function () {
+  modal.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+};
+// open modal event
+openModalBtn.addEventListener("click", openModal);
+</script>
 {% endblock %}
