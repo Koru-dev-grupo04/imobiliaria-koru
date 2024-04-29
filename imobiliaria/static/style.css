@@ -154,14 +154,15 @@ footer {
     flex-direction: column;
     justify-content: center;
     gap: 0.4rem;
-    width: 600px;
+    width: 400px;
     padding: 1.3rem;
-    min-height: 350px;
+    max-height: 350px;
     position: absolute;
-    z-index: 2;
     top: 20%;
-    background-color: yellow;
-    border: 1px solid #ddd;
+    left: 40%;
+    z-index: 2;
+    color: var(--blanco);
+    background-color:var(--azul-escuro);
     border-radius: 15px;
   }
   
@@ -193,17 +194,14 @@ footer {
   .modal-btn {
     display: inline-block;
     padding: 0.8rem 1.4rem;
-    font-weight: 700;
-    background-color: green;
-    color: white;
     border-radius: 5px;
     text-align: center;
-    font-size: 1em;
   }
   
   .modal-btn-open {
     position: absolute;
     bottom: 150px;
+    right: 1.25rem;
   }
   
   .modal-btn-close {
