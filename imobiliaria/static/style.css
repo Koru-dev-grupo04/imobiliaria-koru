@@ -205,7 +205,7 @@ footer {
   }
   
   .modal-btn-close {
-    transform: translate(10px, -20px);
+    transform: translate(-5px, -50px);
     padding: 0.5rem 0.7rem;
     background: #eee;
     border-radius: 50%;
@@ -228,3 +228,17 @@ footer {
     display: none;
   }
   
+  .modal h3 {
+    text-align: center;
+  }
+
+  .modal p {
+    text-align: center;
+  }
+
+  .modal a {
+    color:#000;
+    font-weight: 500;
+    text-decoration: none;
+    margin-top: 50px;
+  }
