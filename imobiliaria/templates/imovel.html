@@ -3,11 +3,11 @@
 {% block component %}
 <div class="container mt-5">
     <div class="row">
-      <div class="col mb-5">
+      <div class="col-12 col-lg-5 mb-5">
         <img src="{{ imagem }}" class="img-fluid w-100">
       </div>
-      <div class="col">
-        <dl class="row">
+      <div class="col-12 col-lg-7">
+        <dl class="row"> 
             <dt class="col-sm-3 fs-5">Tipo</dt>
             <dd class="col-sm-9 fs-5">{{ tipo }}</dd>
           
@@ -23,9 +23,10 @@
             <dt class="col-sm-3 fs-5">Descrição</dt>
             <dd class="col-sm-9 fs-5">{{ descricao }}</dd>
           </dl>
-          <form  method="POST" enctype="multipart/form-data" action="" data-toggle="validation" class="needs-validation d-flex justify-content-start mt-5">
-            <a href="/editar/{{id}}" class="btn btn-outline-dark fs-5 me-2">Editar</a>
-            <a href="/remover/{{id}}" class="btn btn-outline-dark fs-5 me-2">Excluir</a>
+          <form  method="POST" enctype="multipart/form-data" action="" data-toggle="validation" class="needs-validation row d-flex justify-content-start mx-5 py-3">
+            <a href="/editar/{{id}}" class="btn btn-outline-dark col-12 col-sm-5 fs-5 mb-2 px-2">Editar</a>
+            <div class="col-sm-2"></div>
+            <a href="/remover/{{id}}" class="btn btn-outline-dark col-12 col-sm-5 fs-5 mb-2 px-2">Excluir</a>
         </form>
       </div>
     </div>
