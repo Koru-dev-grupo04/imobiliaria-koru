@@ -16,9 +16,19 @@ body {
     background-color: var(--azul-claro);
 }
 
-#link-bar {
+#img-banner{
+    max-width: 10rem;
+  }
+
+#collapsibleNavbar {
     font-weight: 200;
     font-size: 150%;
+    margin-left: 2rem;
+}
+
+#btn-menu {
+    margin-left: 2rem;
+    text-align: end;
 }
 
 #bt_barra_stilo {
@@ -108,22 +118,37 @@ body {
 
 
 /*footer*/
-footer {
-    padding-top: 0.75rem;
+#footer {
     background-color: var(--azul-claro);
+    color: var(--branco);
+    padding-top: 0.75rem;
 }
 
-#footer-img {
-    max-width: 20%;
-}
-
-#quote {
-    margin-top: -2.5rem;
-    margin-bottom: 1rem;
-    color: var(--azul-escuro);
+#footer-prod {
+    background-color: var(--azul-escuro);
+    font-size: 0.9rem;
     text-align: center;
-    font-size: small;
-    font-weight: 200;
+    padding-top: .5rem;
+    color: #fff;
+}
+
+.link-bar {
+    font-weight: 600;
+    color: var(--branco);
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.link-bar:hover {
+    text-decoration: underline;
+    color: var(--azul-escuro);
+}
+
+.logo-footer {
+    text-align: center;
+    padding-left: .25rem;
+    padding-right: .25rem;
+    max-width: 10rem;
 }
 
 /*Sobre */
@@ -256,8 +281,28 @@ button {
 
 /* Responsividade */
 
-@media (max-width: 768px) {
-    .container-fluid a{
+@media (max-width: 994px) {
+    #img-banner, .hide, #test {
       display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .img-wth, .logo-footer {
+        display: none;
+    }
+}
+
+
+#icons-show {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+
+@media (min-width: 994px){
+    #icons-show {
+        display: none;
     }
 }

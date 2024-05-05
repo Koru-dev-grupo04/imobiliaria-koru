@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+	<title>whatsapp-svg</title>
+	<defs>
+		<image  width="100" height="100" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAAXNSR0IB2cksfwAAABJQTFRFAAAAEB4mv79///9///8A/6pVfUXqNgAAAAZ0Uk5TAP8EAgEDqDbj3wAAAuZJREFUeJzVmMt52zAMgEUnvbVpOEG/TpBmgn4ZIZtmBI/gEXxvE6ULxCUJEm8+fGt1kij8AAiRAKiwXX2F/wqJeLevId/f+ZOFDHJzpwa+nSZIuDdaL+9KZEoYRiKVQBn9bBGQuPlthgQjkOi5URgeN46U6P582eR1+0UxDCn6vG8Xpe3QfdPVFcQLl9CvCIkdt8w7RLKmHlEY+ljeoO9aUxicsYmZYIdmZsKaEa4zrBnhSgkZG2EioamYGGEyYdEv5hkiO5rv0ZEj5BekI39aTUoinz6vIhQMb69rzypCfh3eutF7OiFC4StB6X6jKlcRSIkw1kVSIm3I47nKPB/zTQI7KyFuh1dAUC3c9JdCfS9nX27iIAcAwj9kRYbzB+ThyJEazN78A59uRUbz7yPd+QPCl/EUSaKBB2g2fXDIQfJyvgLJ5SgFrLdFPSSrH+xqi0DsBtnGRcpK7qYOi6SJp8lcZQWkr5oLeDbIg4R8PdPQ4TWX4OXvMvXMQ9KeLp71N4xBMMfITTdCQJoy9r1saVwEzRRGp2gXyeF6ONbeoHVn+xDJimEFpFFsS/chkjWDme3wkYRFw9WQ1FPxkCaZ21+t703ZMTIzbSOrhFLnAUxWHzeZHCxSRVjnFj1E9MKtlcIPijox9SV9ckm1EhuptuENIGYb6o6RI5j51Sp8OgkGczQVC5uDeWBF/WkliVK/cK3tvFTbwHFW+Jydy5pw6kVZea0GxfVczf44kY+siLtpKLJ76goQsZNB3zYy4vcwPrNvLuKmB7kpdXM1axN1C9ctwQphjeJCM6rb0UF5sH6tI7K1Xmx5eQO/EjB1TFhA9GFkAdFHnnmMzcFqGjB7fJsh9pDIYhzt6b4eX+VRFHdLWbhm45R/BuFtUwiVn7VjdUYgA8Ml8kCqt1pNkLtcGer9ImDI5Q9u+Asdhe2PCERyqlv73REJyJf20/upUmTYzwRhiEdXIErT47ndLf4gml3/LPIXQu2mdEBeh/AAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+	</style>
+	<use id="img1" href="#img1" x="0" y="0"/>
+</svg>
