@@ -4,13 +4,13 @@
 
 <!-- Container que permite a visualisação em Grid dos imoveis--> 
 <div class="parallax">
-  <div class="container">
+  <div id="container" class="container-fluid">
   {% for id, produto in outro.items() %}
     <div class="col d-inline-flex mt-3">
       
-      <div id="cd_stilo_{{produto['id']}}" class="card my-3 mx-3" style="width: 18rem;">
+      <div id="cd_stilo" class="card my-3 mx-3" style="width: 18rem;">
         <div>
-           <button onclick="remove()" class="hide-btn">⨉</button>
+           <button id="btn-close" onclick="apagar(this)" class="hide-btn">⨉</button>
            <img src="{{ produto['imagem'] }}" class="card-img-top" style="max-height: 10rem; ">
            <p id="card-type"> {{ produto['tipo'] }}</p>
         </div>
@@ -26,11 +26,11 @@
 </div>
 
 <script>
-var cardHide = document.getElementById("cd_stilo")
 
-function remove () {
-  cardHide.classList.add("remove")
-  console.log(cardHide.classList)
+function apagar(button) { 
+  var parent = button.parentNode;
+  var grandparent = parent.parentNode;
+  grandparent.classList.add("remove");
 }
 
 </script>
