@@ -199,12 +199,14 @@ body {
     flex-direction: column;
     justify-content: center;
     gap: 0.4rem;
-    width: 400px;
     padding: 1.3rem;
+    width: 70%;
+    max-width: 400px;
     max-height: 350px;
     position: absolute;
     top: 20%;
-    left: 40%;
+    left: 50%;
+    transform: translate(-50%, 0%);
     z-index: 2;
     color: var(--blanco);
     background-color:var(--azul-escuro);
@@ -225,6 +227,10 @@ body {
 }
   
 .modal p {
+    text-align: center;
+}
+
+.modal h3 {
     text-align: center;
 }
   
@@ -250,9 +256,7 @@ button {
 }
   
 .modal-btn-open {
-    position: relative;
-    bottom: 150px;
-    right: 1.25rem;
+    
 }
   
 .modal-btn-close {
