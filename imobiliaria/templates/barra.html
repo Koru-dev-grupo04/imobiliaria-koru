@@ -48,7 +48,9 @@
           </nav>
     </header>
     <main>
+      <div class="mt-5">
         {% block component %}{% endblock %}
+      </div> 
     </main>
     <footer id="footer">
       <div id="icons-show" class="row pt-2">
@@ -67,7 +69,7 @@
               <a href="/contato" class="link-bar col">Contato</a>
             </div>
           </div>
-          <div class="hide row d-flex flex-row px-5">
+          <div class="hide row d-flex flex-row px-5 mt-2">
             <a href="" class="col-auto"><img class="icon" style="max-width: 2.125rem;" src="../static/icons/facebook.svg" alt="facebook logo"></a>
             <a href="" class="col-auto"><img class="icon" style="max-width: 2.125rem;" src="../static/icons/instagram.svg" alt="instagram logo"></a>
             <a href="" class="col-auto"><img class="icon" style="max-width: 2.125rem;" src="../static/icons/whatsapp.svg" alt="whatsapp logo"></a>
@@ -82,7 +84,7 @@
             <a href="{{ url_for ('index')}}"><img class="logo-footer img-fluid" src="../static/im-footer.png" alt="logo"></a>
           </div>
         </div>
-        <div class="col-auto"></div>
+        <div class="col-auto col-lg-2"></div>
         <div class="hide col-3">
           <div class="row pt-5"></div>
             <div class="row pt-2 px-5">imobiliariakoru@gmail.com</div>

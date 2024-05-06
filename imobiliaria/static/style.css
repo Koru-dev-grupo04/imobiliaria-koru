@@ -14,6 +14,10 @@ body {
 /* Barra de navegação */
 #barra {
     background-color: var(--azul-claro);
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    z-index: 100;
 }
 
 #img-banner{
@@ -152,7 +156,14 @@ body {
 }
 
 /*Sobre */
-#cuadro-sobre {
+#cuadro-sobre-1  {
+    padding: .5rem;
+    margin-bottom: 2rem;
+    border: 2px solid var(--azul-escuro);
+    background-color: var(--azul-claro);
+}
+
+#cuadro-sobre-2  {
     padding: .5rem;
     margin-bottom: 2rem;
     border: 2px solid var(--azul-escuro);
@@ -255,10 +266,6 @@ button {
     text-align: center;
 }
   
-.modal-btn-open {
-    
-}
-  
 .modal-btn-close {
     transform: translate(10px, -20px);
     padding: 0.5rem 0.7rem;
@@ -297,6 +304,12 @@ button {
     }
 }
 
+
+@media (max-width: 767px) {
+    #cuadro-sobre-2 {
+        display: none;
+    }
+}
 
 #icons-show {
     display: flex;
